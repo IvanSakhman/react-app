@@ -1,13 +1,12 @@
 global.Promise        = require('bluebird');
 
-var webpack           = require('werbpack');
+var webpack           = require('webpack');
 var path              = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var publicPath        = 'http://locahost:8050/public/assets';
 var cssName           = process.env.NODE_ENV === 'production' ? 'styles-[hash].css' : 'styles.css';
 var jsName            = process.env.NODE_ENV === 'production' ? 'bundle-[hash].js'  : 'bundle.js';
-var
 
 var plugins = [
     new webpack.DefinePlugin({
@@ -77,7 +76,8 @@ module.exports = {
             },
             {
                 test: /\.jsx?$/,
-                loader: 'babel!eslint-loader', exclude: [/node_modules/, /public/]
+                loaders: ["babel-loader"],
+                exclude: [/node_modules/, /public/]
             },
             {
                 test: /\.json$/,
